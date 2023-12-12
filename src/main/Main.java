@@ -1,8 +1,8 @@
 
 public class Main {
     public static void calculateTotal(Purchase purchase) {
-        double totalWithoutDiscount = purchase.quantity * purchase.price;
-        double totalWithDiscount = totalWithoutDiscount * (1 - purchase.discount);
+        double totalWithoutDiscount = purchase.getQuantity() * purchase.getPrice();
+        double totalWithDiscount = totalWithoutDiscount * (1 - purchase.getDiscount());
         System.out.println("Общая сумма покупки без скидки: " + String.format("%.2f", totalWithoutDiscount));
         System.out.println("Сумма со скидкой: " + String.format("%.2f", totalWithDiscount));
         System.out.println();
