@@ -1,7 +1,7 @@
-package main;
+package main.models;
 
 /**
- * Класс main.Purchase
+ * Класс main.models.Purchase
  * содержит переменные
  * int quantity
  * double price

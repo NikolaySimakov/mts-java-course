@@ -1,6 +1,6 @@
 package main.service;
 
-import main.Purchase;
+import main.models.Purchase;
 import main.models.TotalPrice;
 
 public class CalculateService {
