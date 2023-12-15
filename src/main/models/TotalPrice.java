@@ -1,5 +1,10 @@
 package main.models;
 
+/**
+ * Class main.models.TotalPrice
+ * double withDiscount
+ * double withoutDiscount
+ */
 public class TotalPrice {
 
     private final double withDiscount;

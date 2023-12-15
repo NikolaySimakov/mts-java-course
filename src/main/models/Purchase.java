@@ -1,13 +1,10 @@
 package main.models;
 
 /**
- * Класс main.models.Purchase
- * содержит переменные
+ * Class main.models.Purchase
  * int quantity
  * double price
  * double discount
- * метод calculateTotal для подсчета общей суммы
- * без скидки и со скидкой
  */
 public class Purchase {
     private int quantity; // Количество товаров
