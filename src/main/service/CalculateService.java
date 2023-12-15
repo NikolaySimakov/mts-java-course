@@ -10,7 +10,10 @@ public class CalculateService {
     }
 
     public static TotalPrice calculateTotal(Purchase purchase) {
-        // add validator
+        if (!(purchase.getQuantity() >= 0 && purchase.getPrice() >= 0 && purchase.getDiscount() >= 0)) {
+            throw new RuntimeException();
+        }
+
         double totalWithoutDiscount = purchase.getQuantity() * purchase.getPrice();
         double totalWithDiscount = totalWithoutDiscount * (1 - purchase.getDiscount() / 100);
         return new TotalPrice(round(totalWithDiscount), round(totalWithoutDiscount));
