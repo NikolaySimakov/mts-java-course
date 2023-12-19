@@ -1,9 +1,7 @@
 package models.animals;
 
 import models.Predator;
-
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 public class Wolf extends Predator {
 
@@ -14,31 +12,7 @@ public class Wolf extends Predator {
         this.character = character;
     }
 
-    @Override
-    public String getBreed() {
-        return this.breed;
-    }
-
-    @Override
-    public String getName() {
-        return this.name;
-    }
-
-    @Override
-    public BigDecimal getCost() {
-        return this.cost.setScale(2, RoundingMode.HALF_UP);
-    }
-
-    @Override
-    public String getCharacter() {
-        return this.character;
-    }
-
     public String showInfo() {
-        return "Class: Wolf\n" +
-                "breed: " + this.getBreed() + '\n' +
-                "name: " + this.getName() + '\n' +
-                "cost: " + this.getCost() + '\n' +
-                "character: " + this.getCharacter() + '\n';
+        return "Class: Wolf\n" + this.info();
     }
 }
