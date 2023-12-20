@@ -33,8 +33,6 @@ public interface CreateAnimalService {
                     Dog dog = new Dog("breed", "name", new BigDecimal("758.38749"), "character");
                     System.out.println(dog.showInfo());
                     break;
-                default:
-                    break;
             }
 
             countOfAnimals++;
