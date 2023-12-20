@@ -8,24 +8,24 @@ public interface Animal {
      * Метод, возвращающий породу
      * @return String
      */
-    public String getBreed();
+    String getBreed();
 
     /**
      * Метод, возвращающий имя
      * @return String
      */
-    public String getName();
+    String getName();
 
     /**
      * Метод, возвращающий стоимость
      * @return BigDecimal
      */
-    public BigDecimal getCost();
+    BigDecimal getCost();
 
     /**
      * Метод, возвращающий характер
      * @return String
      */
-    public String getCharacter();
+    String getCharacter();
 
 }
