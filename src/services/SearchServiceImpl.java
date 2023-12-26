@@ -21,7 +21,7 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
-    public ArrayList<String> findLeapYearNames(AbstractAnimal[] animals) {
+    public ArrayList<String> findLeapYearNames(ArrayList<AbstractAnimal> animals) {
         ArrayList<String> names = new ArrayList<String>();
 
         for (AbstractAnimal animal : animals) {
@@ -34,7 +34,7 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
-    public ArrayList<AbstractAnimal> findOlderAnimal(AbstractAnimal[] animals, int n) {
+    public ArrayList<AbstractAnimal> findOlderAnimal(ArrayList<AbstractAnimal> animals, int n) {
         ArrayList<AbstractAnimal> res = new ArrayList<AbstractAnimal>();
 
         for (AbstractAnimal animal : animals) {
@@ -47,13 +47,13 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
-    public ArrayList<AbstractAnimal> findDuplicate(AbstractAnimal[] animals) {
+    public ArrayList<AbstractAnimal> findDuplicate(ArrayList<AbstractAnimal> animals) {
         ArrayList<AbstractAnimal> res = new ArrayList<AbstractAnimal>();
 
-        for (int i = 0; i < animals.length; i++) {
-            for (int j = i + 1; j < animals.length; j++) {
-                if (animals[i].equals(animals[j])) {
-                    res.add(animals[i]);
+        for (int i = 0; i < animals.size(); i++) {
+            for (int j = i + 1; j < animals.size(); j++) {
+                if (animals.get(i).equals(animals.get(j))) {
+                    res.add(animals.get(i));
                 }
             }
         }
