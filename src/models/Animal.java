@@ -1,6 +1,7 @@
 package models;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 public interface Animal {
 
@@ -28,4 +29,9 @@ public interface Animal {
      */
     String getCharacter();
 
+    /**
+     * Метод возвращающий дату рождения
+     * @return LocalDate
+     */
+    LocalDate getBirthDate();
 }

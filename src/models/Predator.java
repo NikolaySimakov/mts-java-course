@@ -2,6 +2,7 @@ package models;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDate;
 
 public abstract class Predator extends AbstractAnimal {
 
@@ -25,11 +26,17 @@ public abstract class Predator extends AbstractAnimal {
         return this.character;
     }
 
+    @Override
+    public LocalDate getBirthDate() {
+        return this.birthDate;
+    }
+
     protected String info() {
         return "Parent class: Predator\n" +
                 "- breed: " + this.getBreed() + '\n' +
                 "- name: " + this.getName() + '\n' +
                 "- cost: " + this.getCost() + '\n' +
-                "- character: " + this.getCharacter() + '\n';
+                "- character: " + this.getCharacter() + '\n' +
+                "- birthDate: " + this.getBirthDate() + '\n';
     }
 }
