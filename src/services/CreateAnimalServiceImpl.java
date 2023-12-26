@@ -24,7 +24,7 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
                 System.out.println(shark.showInfo());
                 break;
             case 2:
-                Cat cat = new Cat("breed", "name", new BigDecimal("47839.12847987"), "character", LocalDate.of(2023, 1, 04));
+                Cat cat = new Cat("breed", "name", new BigDecimal("47839.12847987"), "character", LocalDate.of(2023, 1, 4));
                 System.out.println(cat.showInfo());
                 break;
             case 3:
