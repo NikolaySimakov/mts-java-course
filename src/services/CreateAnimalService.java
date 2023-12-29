@@ -8,15 +8,16 @@ import models.animals.Dog;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.math.BigDecimal;
 
 public interface CreateAnimalService {
 
-    default ArrayList<AbstractAnimal> createAnimals() {
+    default List<AbstractAnimal> createAnimals() {
         AnimalFactory animalFactory = new AnimalFactory();
         Random random = new Random();
-        ArrayList<AbstractAnimal> animals = new ArrayList<AbstractAnimal>();
+        List<AbstractAnimal> animals = new ArrayList<AbstractAnimal>();
         int countOfAnimals = 0;
 
         while (countOfAnimals < 10) {
@@ -29,4 +30,5 @@ public interface CreateAnimalService {
         return animals;
     }
 
+    List<AbstractAnimal> createAnimalsN(int n);
 }

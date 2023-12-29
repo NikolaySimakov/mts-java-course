@@ -9,14 +9,16 @@ import models.animals.Dog;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class CreateAnimalServiceImpl implements CreateAnimalService {
 
-    public ArrayList<AbstractAnimal> createAnimalsN(int n) {
+    @Override
+    public List<AbstractAnimal> createAnimalsN(int n) {
         AnimalFactory animalFactory = new AnimalFactory();
+        List<AbstractAnimal> animals = new ArrayList<AbstractAnimal>();
         Random random = new Random();
-        ArrayList<AbstractAnimal> animals = new ArrayList<AbstractAnimal>();
 
         for (int i = 0; i < n; i++) {
             int randomValue = random.nextInt(4);
@@ -27,10 +29,10 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
     }
 
     @Override
-    public ArrayList<AbstractAnimal> createAnimals() {
+    public List<AbstractAnimal> createAnimals() {
         AnimalFactory animalFactory = new AnimalFactory();
+        List<AbstractAnimal> animals = new ArrayList<AbstractAnimal>();
         Random random = new Random();
-        ArrayList<AbstractAnimal> animals = new ArrayList<AbstractAnimal>();
         int countOfAnimals = 0;
 
         do {

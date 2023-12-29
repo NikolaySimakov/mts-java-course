@@ -4,6 +4,7 @@ import models.AbstractAnimal;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class SearchServiceImpl implements SearchService {
 
@@ -21,8 +22,8 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
-    public ArrayList<String> findLeapYearNames(ArrayList<AbstractAnimal> animals) {
-        ArrayList<String> names = new ArrayList<String>();
+    public List<String> findLeapYearNames(List<AbstractAnimal> animals) {
+        List<String> names = new ArrayList<String>();
 
         for (AbstractAnimal animal : animals) {
             if (isLeapYear(animal.getBirthDate())) {
@@ -34,8 +35,8 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
-    public ArrayList<AbstractAnimal> findOlderAnimal(ArrayList<AbstractAnimal> animals, int n) {
-        ArrayList<AbstractAnimal> res = new ArrayList<AbstractAnimal>();
+    public List<AbstractAnimal> findOlderAnimal(List<AbstractAnimal> animals, int n) {
+        List<AbstractAnimal> res = new ArrayList<AbstractAnimal>();
 
         for (AbstractAnimal animal : animals) {
             if (isOlderThan(animal.getBirthDate(), n)) {
@@ -47,8 +48,8 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
-    public ArrayList<AbstractAnimal> findDuplicate(ArrayList<AbstractAnimal> animals) {
-        ArrayList<AbstractAnimal> res = new ArrayList<AbstractAnimal>();
+    public List<AbstractAnimal> findDuplicate(List<AbstractAnimal> animals) {
+        List<AbstractAnimal> res = new ArrayList<AbstractAnimal>();
 
         for (int i = 0; i < animals.size(); i++) {
             for (int j = i + 1; j < animals.size(); j++) {

@@ -3,12 +3,13 @@ package services;
 import models.AbstractAnimal;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public interface SearchService {
 
-    ArrayList<String> findLeapYearNames(ArrayList<AbstractAnimal> animals);
+    List<String> findLeapYearNames(List<AbstractAnimal> animals);
 
-    ArrayList<AbstractAnimal> findOlderAnimal(ArrayList<AbstractAnimal> animals, int n);
+    List<AbstractAnimal> findOlderAnimal(List<AbstractAnimal> animals, int n);
 
-    ArrayList<AbstractAnimal> findDuplicate(ArrayList<AbstractAnimal> animals);
+    List<AbstractAnimal> findDuplicate(List<AbstractAnimal> animals);
 }

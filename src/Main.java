@@ -1,25 +1,28 @@
 import models.AbstractAnimal;
 import models.animals.Cat;
 import models.animals.Wolf;
+import services.CreateAnimalService;
 import services.CreateAnimalServiceImpl;
+import services.SearchService;
 import services.SearchServiceImpl;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
     public static void main(String[] args) {
-        CreateAnimalServiceImpl animalServiceImpl = new CreateAnimalServiceImpl();
-        SearchServiceImpl searchServiceImpl = new SearchServiceImpl();
+        CreateAnimalService animalServiceImpl = new CreateAnimalServiceImpl();
+        SearchService searchServiceImpl = new SearchServiceImpl();
 
         // create 10 animals
-        ArrayList<AbstractAnimal> animals1 = animalServiceImpl.createAnimals();
+        List<AbstractAnimal> animals1 = animalServiceImpl.createAnimals();
 
         // create N animals
         int n = 4;
-        ArrayList<AbstractAnimal> animals2 = animalServiceImpl.createAnimalsN(n);
+        List<AbstractAnimal> animals2 = animalServiceImpl.createAnimalsN(n);
 
 
         System.out.println(searchServiceImpl.findLeapYearNames(animals1));
