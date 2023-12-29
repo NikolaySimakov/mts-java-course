@@ -1,8 +1,7 @@
-package services;
+package main.services;
 
-import models.AbstractAnimal;
+import main.models.AbstractAnimal;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public interface SearchService {

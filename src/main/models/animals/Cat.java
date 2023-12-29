@@ -1,14 +1,13 @@
-package models.animals;
+package main.models.animals;
 
-import models.Pet;
+import main.models.Pet;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.time.LocalDate;
 
-public class Dog extends Pet {
+public class Cat extends Pet {
 
-    public Dog(String breed, String name, BigDecimal cost, String character, LocalDate birthDate) {
+    public Cat(String breed, String name, BigDecimal cost, String character, LocalDate birthDate) {
         this.breed = breed;
         this.name = name;
         this.cost = cost;
@@ -17,6 +16,6 @@ public class Dog extends Pet {
     }
 
     public String showInfo() {
-        return "Class: Dog\n" + this.info();
+        return "Class: Cat\n" + this.info();
     }
 }

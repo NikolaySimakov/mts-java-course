@@ -1,14 +1,11 @@
-import models.AbstractAnimal;
-import models.animals.Cat;
-import models.animals.Wolf;
-import services.CreateAnimalService;
-import services.CreateAnimalServiceImpl;
-import services.SearchService;
-import services.SearchServiceImpl;
+package main;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.ArrayList;
+import main.models.AbstractAnimal;
+import main.services.CreateAnimalService;
+import main.services.CreateAnimalServiceImpl;
+import main.services.SearchService;
+import main.services.SearchServiceImpl;
+
 import java.util.List;
 
 public class Main {

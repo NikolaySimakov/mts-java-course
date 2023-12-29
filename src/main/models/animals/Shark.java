@@ -1,9 +1,8 @@
-package models.animals;
+package main.models.animals;
 
-import models.Predator;
+import main.models.Predator;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.time.LocalDate;
 
 public class Shark extends Predator {

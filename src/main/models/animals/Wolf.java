@@ -1,14 +1,12 @@
-package models.animals;
+package main.models.animals;
 
-import models.Pet;
-
+import main.models.Predator;
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.time.LocalDate;
 
-public class Cat extends Pet {
+public class Wolf extends Predator {
 
-    public Cat(String breed, String name, BigDecimal cost, String character, LocalDate birthDate) {
+    public Wolf(String breed, String name, BigDecimal cost, String character, LocalDate birthDate) {
         this.breed = breed;
         this.name = name;
         this.cost = cost;
@@ -17,6 +15,6 @@ public class Cat extends Pet {
     }
 
     public String showInfo() {
-        return "Class: Cat\n" + this.info();
+        return "Class: Wolf\n" + this.info();
     }
 }

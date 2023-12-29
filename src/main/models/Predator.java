@@ -1,11 +1,11 @@
-package models;
+package main.models;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public abstract class Pet extends AbstractAnimal {
+public abstract class Predator extends AbstractAnimal {
 
     @Override
     public String getBreed() {
@@ -38,12 +38,11 @@ public abstract class Pet extends AbstractAnimal {
     }
 
     protected String info() {
-        return "Parent class: Pet\n" +
+        return "Parent class: Predator\n" +
                 "- breed: " + this.getBreed() + '\n' +
                 "- name: " + this.getName() + '\n' +
                 "- cost: " + this.getCost() + '\n' +
                 "- character: " + this.getCharacter() + '\n' +
                 "- birthDate: " + dateFormatter(this.getBirthDate()) + '\n';
     }
-
 }

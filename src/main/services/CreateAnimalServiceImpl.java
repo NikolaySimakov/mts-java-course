@@ -1,10 +1,6 @@
-package services;
+package main.services;
 
-import models.AbstractAnimal;
-import models.animals.Shark;
-import models.animals.Wolf;
-import models.animals.Cat;
-import models.animals.Dog;
+import main.models.AbstractAnimal;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

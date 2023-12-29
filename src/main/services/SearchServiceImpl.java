@@ -1,6 +1,6 @@
-package services;
+package main.services;
 
-import models.AbstractAnimal;
+import main.models.AbstractAnimal;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
