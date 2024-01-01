@@ -53,7 +53,7 @@ public class SearchServiceImpl implements SearchService {
 
         for (int i = 0; i < animals.size(); i++) {
             for (int j = i + 1; j < animals.size(); j++) {
-                if (animals.get(i).equals(animals.get(j))) {
+                if (animals.get(i).equals(animals.get(j)) && !res.contains(animals.get(i)) && !res.contains(animals.get(j))) {
                     res.add(animals.get(i));
                 }
             }
