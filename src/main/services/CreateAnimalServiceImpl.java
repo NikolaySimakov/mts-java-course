@@ -10,6 +10,21 @@ import java.util.Random;
 
 public class CreateAnimalServiceImpl implements CreateAnimalService {
 
+    private String getAnimalName(int i) {
+        String[] names = {"Wolf", "Shark", "Cat", "Dog"};
+        return names[i];
+    }
+
+    private LocalDate getBirthDate(int i) {
+        return switch (i) {
+            case 0 -> LocalDate.of(2010, 5, 24);
+            case 1 -> LocalDate.of(2012, 1, 8);
+            case 2 -> LocalDate.of(2016, 6, 20);
+            case 3 -> LocalDate.of(2020, 7, 13);
+            default -> LocalDate.now();
+        };
+    }
+
     @Override
     public List<AbstractAnimal> createAnimalsN(int n) {
         AnimalFactory animalFactory = new AnimalFactory();
@@ -18,7 +33,7 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
 
         for (int i = 0; i < n; i++) {
             int randomValue = random.nextInt(4);
-            AbstractAnimal animal = animalFactory.createAnimal(randomValue, "breed", "name", new BigDecimal("123.2124512"), "character", LocalDate.of(2000, 7, 28));
+            AbstractAnimal animal = animalFactory.createAnimal(randomValue, "breed", getAnimalName(randomValue), new BigDecimal("123.2124512"), "character", getBirthDate(randomValue));
             animals.add(animal);
         }
         return animals;
@@ -33,7 +48,7 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
 
         do {
             int randomValue = random.nextInt(4);
-            AbstractAnimal animal = animalFactory.createAnimal(randomValue, "breed", "name", new BigDecimal("123.2124512"), "character", LocalDate.of(2000, 7, 28));
+            AbstractAnimal animal = animalFactory.createAnimal(randomValue, "breed", getAnimalName(randomValue), new BigDecimal("123.2124512"), "character", getBirthDate(randomValue));
             animals.add(animal);
         } while (++countOfAnimals < 10);
 
