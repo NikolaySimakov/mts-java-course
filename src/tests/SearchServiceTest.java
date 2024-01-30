@@ -123,7 +123,10 @@ public class SearchServiceTest {
 
             List<AbstractAnimal> testAnimals = Arrays.asList(dog1, dog2, cat1, cat2, wolf, shark);
             List<AbstractAnimal> expectedAnimals = Arrays.asList(dog1, cat1);
-            Assertions.assertEquals(expectedAnimals, searchService.findDuplicate(testAnimals));
+            List<AbstractAnimal> duplicates = searchService.findDuplicate(testAnimals);
+
+            Assertions.assertEquals(2, duplicates.size());
+            Assertions.assertEquals(expectedAnimals, duplicates);
         }
     }
 }
