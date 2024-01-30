@@ -20,8 +20,12 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
+import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
@@ -40,7 +44,27 @@ public class SearchServiceTest {
 
     @Nested
     public class EqualsMethodTest {
+        @Test
+        @DisplayName("Test equal animals")
+        public void testEqualAnimals() {
+            Dog dog1 = new Dog("Dog", "dog", new BigDecimal("13.213"), "character",
+                    LocalDate.of(2020, 7, 13));
+            Dog dog2 = new Dog("Dog", "dog", new BigDecimal("13.213"), "character",
+                    LocalDate.of(2020, 7, 13));
 
+            assertTrue(dog1.equals(dog2));
+        }
+
+        @Test
+        @DisplayName("Test unequal animals")
+        public void testUnequalAnimals() {
+            Dog dog1 = new Dog("Dog1", "dog1", new BigDecimal("11.213"), "char",
+                    LocalDate.of(2022, 7, 13));
+            Dog dog2 = new Dog("Dog2", "dog2", new BigDecimal("13.213"), "character",
+                    LocalDate.of(2020, 7, 13));
+
+            assertFalse(dog1.equals(dog2));
+        }
     }
 
     @Nested
