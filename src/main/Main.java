@@ -27,6 +27,6 @@ public class Main {
         System.out.println(searchServiceImpl.findDuplicate(animals1));
 
         System.out.println(searchServiceImpl.findLeapYearNames(animals2));
-        System.out.println(searchServiceImpl.findOlderAnimal(animals1, 5));
+        System.out.println(searchServiceImpl.findOlderAnimal(animals1, 10));
     }
 }
