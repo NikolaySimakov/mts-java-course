@@ -1,10 +1,10 @@
-package main;
+package app;
 
-import main.models.AbstractAnimal;
-import main.services.CreateAnimalService;
-import main.services.CreateAnimalServiceImpl;
-import main.services.SearchService;
-import main.services.SearchServiceImpl;
+import app.models.AbstractAnimal;
+import app.services.CreateAnimalService;
+import app.services.CreateAnimalServiceImpl;
+import app.services.SearchService;
+import app.services.SearchServiceImpl;
 
 import java.util.List;
 

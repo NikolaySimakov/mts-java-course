@@ -1,14 +1,14 @@
-package tests;
+package app;
 
-import main.models.AbstractAnimal;
-import main.models.animals.Cat;
-import main.models.animals.Dog;
-import main.models.animals.Shark;
-import main.models.animals.Wolf;
+import app.models.AbstractAnimal;
+import app.models.animals.Cat;
+import app.models.animals.Dog;
+import app.models.animals.Shark;
+import app.models.animals.Wolf;
 import org.junit.jupiter.api.*;
 
-import main.services.SearchService;
-import main.services.SearchServiceImpl;
+import app.services.SearchService;
+import app.services.SearchServiceImpl;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -31,7 +31,6 @@ import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 
 
-@ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = Strictness.LENIENT)
 public class SearchServiceTest {
 
