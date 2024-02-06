@@ -5,8 +5,6 @@ import app.models.Animal;
 import app.repositories.AnimalsRepository;
 import app.services.CreateAnimalService;
 import app.services.CreateAnimalServiceImpl;
-import app.services.SearchService;
-import app.services.SearchServiceImpl;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
