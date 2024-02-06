@@ -2,6 +2,7 @@ package app.models;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public abstract class AbstractAnimal implements Animal {
     protected String breed; // погода
@@ -9,6 +10,11 @@ public abstract class AbstractAnimal implements Animal {
     protected BigDecimal cost; // цена в магазине должна быть округлена до 2 знаков после запятой
     protected String character; // характер
     protected LocalDate birthDate; // дата рождения
+
+    private String dateFormatter(LocalDate date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        return date.format(formatter);
+    }
 
     @Override
     public boolean equals(Object obj) {
@@ -23,5 +29,13 @@ public abstract class AbstractAnimal implements Animal {
                 cost.equals(other.cost) &&
                 character.equals(other.character) &&
                 birthDate.equals(other.birthDate);
+    }
+
+    public String shortInfo() {
+        return "- breed: " + this.getBreed() + '\n' +
+                "- name: " + this.getName() + '\n' +
+                "- cost: " + this.getCost() + '\n' +
+                "- character: " + this.getCharacter() + '\n' +
+                "- birthDate: " + dateFormatter(this.getBirthDate()) + '\n';
     }
 }

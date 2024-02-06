@@ -1,6 +1,8 @@
 package app.services;
 
 import app.models.AbstractAnimal;
+import app.models.Animal;
+import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -8,7 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+
 public class CreateAnimalServiceImpl implements CreateAnimalService {
+
+    public List<Animal> animals;
 
     private String getAnimalName(int i) {
         String[] names = {"Wolf", "Shark", "Cat", "Dog"};

@@ -32,17 +32,7 @@ public abstract class Predator extends AbstractAnimal {
         return this.birthDate;
     }
 
-    private String dateFormatter(LocalDate date) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        return date.format(formatter);
-    }
-
     protected String info() {
-        return "Parent class: Predator\n" +
-                "- breed: " + this.getBreed() + '\n' +
-                "- name: " + this.getName() + '\n' +
-                "- cost: " + this.getCost() + '\n' +
-                "- character: " + this.getCharacter() + '\n' +
-                "- birthDate: " + dateFormatter(this.getBirthDate()) + '\n';
+        return "Parent class: Predator\n" + this.shortInfo();
     }
 }
