@@ -32,8 +32,8 @@ public abstract class Pet extends AbstractAnimal {
         return this.birthDate;
     }
 
-    protected String info() {
-        return "Parent class: Pet\n" + this.shortInfo();
+    public String info() {
+        return String.format("Parent class: Pet\n%s", this.shortInfo());
     }
 
 }

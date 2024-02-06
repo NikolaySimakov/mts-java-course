@@ -32,7 +32,7 @@ public abstract class Predator extends AbstractAnimal {
         return this.birthDate;
     }
 
-    protected String info() {
-        return "Parent class: Predator\n" + this.shortInfo();
+    public String info() {
+        return String.format("Parent class: Predator\n%s", this.shortInfo());
     }
 }
