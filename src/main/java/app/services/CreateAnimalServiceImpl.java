@@ -1,6 +1,6 @@
-package main.services;
+package app.services;
 
-import main.models.AbstractAnimal;
+import app.models.AbstractAnimal;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;

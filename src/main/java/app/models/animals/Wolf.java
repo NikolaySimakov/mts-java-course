@@ -1,13 +1,12 @@
-package main.models.animals;
+package app.models.animals;
 
-import main.models.Predator;
-
+import app.models.Predator;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-public class Shark extends Predator {
+public class Wolf extends Predator {
 
-    public Shark(String breed, String name, BigDecimal cost, String character, LocalDate birthDate) {
+    public Wolf(String breed, String name, BigDecimal cost, String character, LocalDate birthDate) {
         this.breed = breed;
         this.name = name;
         this.cost = cost;
@@ -16,6 +15,6 @@ public class Shark extends Predator {
     }
 
     public String showInfo() {
-        return "Class: Shark\n" + this.info();
+        return "Class: Wolf\n" + this.info();
     }
 }

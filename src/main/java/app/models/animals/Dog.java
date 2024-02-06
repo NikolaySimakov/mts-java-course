@@ -1,6 +1,6 @@
-package main.models.animals;
+package app.models.animals;
 
-import main.models.Pet;
+import app.models.Pet;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
