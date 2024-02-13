@@ -1,10 +1,9 @@
 package ru.mts.mtsjavacourse.repositories;
 
-import ru.mts.mtsjavacourse.models.AbstractAnimal;
-import ru.mts.mtsjavacourse.models.Animal;
-import ru.mts.mtsjavacourse.services.CreateAnimalService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import ru.mts.mtsjavacourse.models.AbstractAnimal;
+import ru.mts.mtsjavacourse.services.CreateAnimalService;
 
 import javax.annotation.PostConstruct;
 import java.time.LocalDate;
