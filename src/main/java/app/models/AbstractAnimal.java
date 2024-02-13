@@ -39,3 +39,4 @@ public abstract class AbstractAnimal implements Animal {
                 "- birthDate: " + dateFormatter(this.getBirthDate()) + '\n';
     }
 }
+
