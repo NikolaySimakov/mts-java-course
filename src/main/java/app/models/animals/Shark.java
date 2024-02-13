@@ -16,6 +16,6 @@ public class Shark extends Predator {
     }
 
     public String showInfo() {
-        return "Class: Shark\n" + this.info();
+        return String.format("Class: Shark\n%s", this.info());
     }
 }

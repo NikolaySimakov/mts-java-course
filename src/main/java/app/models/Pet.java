@@ -32,18 +32,8 @@ public abstract class Pet extends AbstractAnimal {
         return this.birthDate;
     }
 
-    private String dateFormatter(LocalDate date) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        return date.format(formatter);
-    }
-
-    protected String info() {
-        return "Parent class: Pet\n" +
-                "- breed: " + this.getBreed() + '\n' +
-                "- name: " + this.getName() + '\n' +
-                "- cost: " + this.getCost() + '\n' +
-                "- character: " + this.getCharacter() + '\n' +
-                "- birthDate: " + dateFormatter(this.getBirthDate()) + '\n';
+    public String info() {
+        return String.format("Parent class: Pet\n%s", this.shortInfo());
     }
 
 }

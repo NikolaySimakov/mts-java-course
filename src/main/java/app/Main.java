@@ -1,32 +1,42 @@
 package app;
 
 import app.models.AbstractAnimal;
+import app.models.Animal;
+import app.repositories.AnimalsRepository;
 import app.services.CreateAnimalService;
 import app.services.CreateAnimalServiceImpl;
-import app.services.SearchService;
-import app.services.SearchServiceImpl;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
 
 import java.util.List;
 
+@ComponentScan
 public class Main {
 
     public static void main(String[] args) {
-        CreateAnimalService animalServiceImpl = new CreateAnimalServiceImpl();
-        SearchService searchServiceImpl = new SearchServiceImpl();
+        ApplicationContext context = new AnnotationConfigApplicationContext(Main.class);
 
-        // create 10 animals
-        List<AbstractAnimal> animals1 = animalServiceImpl.createAnimals();
+        CreateAnimalService animalServiceImpl = context.getBean(CreateAnimalService.class);
+        AnimalsRepository animalsRepository = context.getBean(AnimalsRepository.class);
 
-        // create N animals
-        int n = 4;
-        List<AbstractAnimal> animals2 = animalServiceImpl.createAnimalsN(n);
+//        int n = 4;
+//        animalServiceImpl.createAnimalsN(n);
 
+        System.out.println();
+        System.out.println("--------findLeapYearNames--------");
+        System.out.println();
+        System.out.println(animalsRepository.findLeapYearNames());
+        System.out.println();
+        System.out.println("--------findOlderAnimal--------");
+        System.out.println();
+        for (AbstractAnimal animal : animalsRepository.findOlderAnimal(5)) {
+            System.out.println(animal.shortInfo());
+        }
+        System.out.println();
+        System.out.println("--------printDuplicate-------");
+        System.out.println();
+        animalsRepository.printDuplicate();
 
-        System.out.println(searchServiceImpl.findLeapYearNames(animals1));
-        System.out.println(searchServiceImpl.findOlderAnimal(animals1, 5));
-        System.out.println(searchServiceImpl.findDuplicate(animals1));
-
-        System.out.println(searchServiceImpl.findLeapYearNames(animals2));
-        System.out.println(searchServiceImpl.findOlderAnimal(animals1, 10));
     }
 }

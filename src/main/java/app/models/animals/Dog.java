@@ -16,6 +16,6 @@ public class Dog extends Pet {
     }
 
     public String showInfo() {
-        return "Class: Dog\n" + this.info();
+        return String.format("Class: Dog\n%s", this.info());
     }
 }

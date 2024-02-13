@@ -15,6 +15,6 @@ public class Wolf extends Predator {
     }
 
     public String showInfo() {
-        return "Class: Wolf\n" + this.info();
+        return String.format("Class: Wolf\n%s", this.info());
     }
 }
