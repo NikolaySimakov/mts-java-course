@@ -1,1 +1,2 @@
-rootProject.name = 'mts-java-course'
+include 'create-animals-starter'
+include 'application'

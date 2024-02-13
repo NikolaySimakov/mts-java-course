@@ -1,5 +1,6 @@
 package ru.mts.mtsjavacourse.services;
 
+import org.springframework.stereotype.Service;
 import ru.mts.mtsjavacourse.models.AbstractAnimal;
 import ru.mts.mtsjavacourse.models.animals.Wolf;
 import ru.mts.mtsjavacourse.models.animals.Shark;
@@ -9,7 +10,9 @@ import ru.mts.mtsjavacourse.models.animals.Dog;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+@Service
 public class AnimalFactory {
+
     public AbstractAnimal createAnimal(int n, String breed, String name, BigDecimal weight, String character, LocalDate birthDate) {
 
         return switch (n) {
