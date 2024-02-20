@@ -1,4 +1,4 @@
-package create.animals;
+package ru.mts.mtsjavacourse;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

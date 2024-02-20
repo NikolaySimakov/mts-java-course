@@ -1,4 +1,4 @@
-package create.animals;
+package ru.mts.mtsjavacourse;
 
 import java.util.HashMap;
 import java.util.List;
