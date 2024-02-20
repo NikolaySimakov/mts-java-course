@@ -23,5 +23,6 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test:3.2.2'
 }
 
-
-
+tasks.named('test') {
+	useJUnitPlatform()
+}
