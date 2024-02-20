@@ -21,7 +21,7 @@ public interface CreateAnimalService {
 
         while (countOfAnimals < 10) {
             int randomValue = random.nextInt(4);
-            AbstractAnimal animal = animalFactory.createAnimal(randomValue, "breed", "name", new BigDecimal("123.2124512"), "character", LocalDate.of(2000, 7, 28));
+            AbstractAnimal animal = animalFactory.createAnimal(randomValue, "breed", new BigDecimal("123.2124512"), "character", LocalDate.of(2000, 7, 28));
             animals.add(animal);
             countOfAnimals++;
         }

@@ -4,6 +4,8 @@ application:
       names:
         - Barsik
         - Persik
+        - Barsik1
+        - Persik1
     dog:
       names:
         - Bella

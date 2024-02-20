@@ -1,5 +1,6 @@
 package ru.mts.mtsjavacourse.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import ru.mts.mtsjavacourse.models.AbstractAnimal;
 import ru.mts.mtsjavacourse.models.Animal;
 import org.springframework.stereotype.Component;
@@ -15,9 +16,10 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
 
     public List<Animal> animals;
 
-    private String getAnimalName(int i) {
-        String[] names = {"Wolf", "Shark", "Cat", "Dog"};
-        return names[i];
+    private final AnimalFactory animalFactory;
+
+    public CreateAnimalServiceImpl(@Autowired AnimalFactory animalFactory) {
+        this.animalFactory = animalFactory;
     }
 
     private LocalDate getBirthDate(int i) {
@@ -32,13 +34,12 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
 
     @Override
     public List<AbstractAnimal> createAnimalsN(int n) {
-        AnimalFactory animalFactory = new AnimalFactory();
         List<AbstractAnimal> animals = new ArrayList<AbstractAnimal>();
         Random random = new Random();
 
         for (int i = 0; i < n; i++) {
             int randomValue = random.nextInt(4);
-            AbstractAnimal animal = animalFactory.createAnimal(randomValue, "breed", getAnimalName(randomValue), new BigDecimal("123.2124512"), "character", getBirthDate(randomValue));
+            AbstractAnimal animal = animalFactory.createAnimal(randomValue, "breed", new BigDecimal("123.2124512"), "character", getBirthDate(randomValue));
             animals.add(animal);
         }
         return animals;
@@ -46,14 +47,13 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
 
     @Override
     public List<AbstractAnimal> createAnimals() {
-        AnimalFactory animalFactory = new AnimalFactory();
         List<AbstractAnimal> animals = new ArrayList<AbstractAnimal>();
         Random random = new Random();
         int countOfAnimals = 0;
 
         do {
             int randomValue = random.nextInt(4);
-            AbstractAnimal animal = animalFactory.createAnimal(randomValue, "breed", getAnimalName(randomValue), new BigDecimal("123.2124512"), "character", getBirthDate(randomValue));
+            AbstractAnimal animal = animalFactory.createAnimal(randomValue, "breed", new BigDecimal("123.2124512"), "character", getBirthDate(randomValue));
             animals.add(animal);
         } while (++countOfAnimals < 10);
 
