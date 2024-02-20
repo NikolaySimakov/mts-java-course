@@ -1,16 +1,13 @@
 package ru.mts.mtsjavacourse.services;
 
 import ru.mts.mtsjavacourse.models.AbstractAnimal;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.math.BigDecimal;
 
-@Service
 public interface CreateAnimalService {
 
     default List<AbstractAnimal> createAnimals() {

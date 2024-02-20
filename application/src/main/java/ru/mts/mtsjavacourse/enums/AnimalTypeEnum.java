@@ -1,4 +1,4 @@
-package ru.mts.mtsjavacourse.services;
+package ru.mts.mtsjavacourse.enums;
 
 public enum AnimalTypeEnum {
     CAT,

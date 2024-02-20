@@ -14,8 +14,10 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter:3.2.2'
-	implementation 'org.springframework.boot:spring-boot-autoconfigure:3.2.2'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter', version: '3.2.2'
+	testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '3.2.2'
+	annotationProcessor group: 'org.springframework.boot', name: 'spring-boot-configuration-processor', version: '3.2.2'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '3.2.2'
 }
 
 

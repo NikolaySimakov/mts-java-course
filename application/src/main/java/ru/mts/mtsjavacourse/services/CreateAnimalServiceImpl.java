@@ -1,9 +1,8 @@
 package ru.mts.mtsjavacourse.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
 import ru.mts.mtsjavacourse.models.AbstractAnimal;
-import ru.mts.mtsjavacourse.models.Animal;
-import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -11,14 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
+@Scope("prototype")
+@Service
 public class CreateAnimalServiceImpl implements CreateAnimalService {
-
-    public List<Animal> animals;
 
     private final AnimalFactory animalFactory;
 
-    public CreateAnimalServiceImpl(@Autowired AnimalFactory animalFactory) {
+    public CreateAnimalServiceImpl(AnimalFactory animalFactory) {
         this.animalFactory = animalFactory;
     }
 
