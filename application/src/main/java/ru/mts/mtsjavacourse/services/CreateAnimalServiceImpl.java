@@ -1,7 +1,6 @@
 package ru.mts.mtsjavacourse.services;
 
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Service;
 import ru.mts.mtsjavacourse.models.AbstractAnimal;
 
 import java.math.BigDecimal;
@@ -11,7 +10,6 @@ import java.util.List;
 import java.util.Random;
 
 @Scope("prototype")
-@Service
 public class CreateAnimalServiceImpl implements CreateAnimalService {
 
     private final AnimalFactory animalFactory;
@@ -28,6 +26,11 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
             case 3 -> LocalDate.of(2020, 7, 13);
             default -> LocalDate.now();
         };
+    }
+
+    @Override
+    public AbstractAnimal createAnimal(int i) {
+        return animalFactory.createAnimal(i, "breed", new BigDecimal("123.2124512"), "character", getBirthDate(i));
     }
 
     @Override
