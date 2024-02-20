@@ -2,17 +2,26 @@ application:
   animal:
     cat:
       names:
-        - barsik
-        - persik
+        - Barsik
+        - Persik
     dog:
       names:
-        - barsik
-        - persik
+        - Bella
+        - Max
+        - Luna
+        - Rex
+        - Daisy
     shark:
       names:
-        - barsik
-        - persik
+        - Orca
+        - Hammerhead
+        - Tiger
+        - Great White
+        - Silvertip
     wolf:
       names:
-        - barsik
-        - persik
+        - Fenrir
+        - Blaze
+        - Hati
+        - Balto
+        - Dakota
