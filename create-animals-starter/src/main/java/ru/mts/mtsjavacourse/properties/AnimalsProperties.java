@@ -1,14 +1,23 @@
-package ru.mts.mtsjavacourse;
+package ru.mts.mtsjavacourse.properties;
 
+import jakarta.validation.constraints.NotEmpty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 
-@ConfigurationProperties(prefix = "application.animal")
+@Component
+@ConfigurationProperties(prefix = "animal")
+@Validated
 public class AnimalsProperties {
+    @NotEmpty
     private List<String> catNames;
+    @NotEmpty
     private List<String> dogNames;
+    @NotEmpty
     private List<String> sharkNames;
+    @NotEmpty
     private List<String> wolfNames;
 
     public List<String> getCatNames() {
