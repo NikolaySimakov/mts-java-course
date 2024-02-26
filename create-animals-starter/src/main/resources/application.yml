@@ -1,0 +1,24 @@
+animal:
+  catNames:
+    - Barsik
+    - Persik
+    - Barsik1
+    - Persik1
+  dogNames:
+    - Bella
+    - Max
+    - Luna
+    - Rex
+    - Daisy
+  sharkNames:
+    - Orca
+    - Hammerhead
+    - Tiger
+    - Great White
+    - Silvertip
+  wolfNames:
+    - Fenrir
+    - Blaze
+    - Hati
+    - Balto
+    - Dakota

@@ -8,7 +8,7 @@ import ru.mts.mtsjavacourse.services.CreateAnimalServiceImpl;
 
 
 @TestConfiguration
-public class MtsJavaCourseApplicationTestConfig {
+public class CreateAnimalsTestConfig {
 
     @Bean
     public CreateAnimalService createAnimalService(AnimalFactory animalFactory) {
