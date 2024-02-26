@@ -51,4 +51,19 @@ public class AnimalsProperties {
     public void setWolfNames(List<String> wolfNames) {
         this.wolfNames = wolfNames;
     }
+
+    public List<String> getNamesByIndex(int i) {
+        switch (i) {
+            case 0:
+                return getWolfNames();
+            case 1:
+                return getSharkNames();
+            case 2:
+                return getCatNames();
+            case 3:
+                return getDogNames();
+            default:
+                throw new IllegalArgumentException("Error animal names");
+        }
+    }
 }
