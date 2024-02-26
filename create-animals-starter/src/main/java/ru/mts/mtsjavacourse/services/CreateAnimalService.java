@@ -1,6 +1,5 @@
 package ru.mts.mtsjavacourse.services;
 
-import org.springframework.stereotype.Service;
 import ru.mts.mtsjavacourse.models.AbstractAnimal;
 
 import java.math.BigDecimal;
@@ -9,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-@Service
 public interface CreateAnimalService {
 
     AbstractAnimal createAnimal(int i);
