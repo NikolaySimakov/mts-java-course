@@ -34,9 +34,9 @@ class CreateAnimalsStarterApplicationTests {
 	@ParameterizedTest(name = "Test for indexes {arguments}")
 	@ValueSource(ints = {0, 1, 2, 3})
 	@DisplayName("Equals positive test")
-	public void animalEqualsPositiveTest() {
-		AbstractAnimal animal1 = createAnimalService.createAnimal(1);
-		AbstractAnimal animal2 = createAnimalService.createAnimal(1);
+	public void animalEqualsPositiveTest(int i) {
+		AbstractAnimal animal1 = createAnimalService.createAnimal(i);
+		AbstractAnimal animal2 = createAnimalService.createAnimal(i);
 
 		assertSame(animal1.getClass(), animal2.getClass());
 		assertNotSame(animal1, animal2);
@@ -44,17 +44,23 @@ class CreateAnimalsStarterApplicationTests {
 	}
 
 	@ParameterizedTest(name = "Test for indexes {arguments}")
-	@ValueSource(ints = {0, 1, 2, 3})
+	@ValueSource(ints = {0, 1, 2})
 	@DisplayName("Equals negative test")
-	public void animalEqualsNegativeTest() {
-		AbstractAnimal animal1 = createAnimalService.createAnimal(1);
-		AbstractAnimal animal2 = createAnimalService.createAnimal(2);
+	public void animalEqualsNegativeTest(int i) {
+		AbstractAnimal animal1 = createAnimalService.createAnimal(i);
+		AbstractAnimal animal2 = createAnimalService.createAnimal(i + 1);
 
 		assertNotSame(animal1.getClass(), animal2.getClass());
 		assertNotSame(animal1, animal2);
 
 	}
 
-
+	@ParameterizedTest(name = "Test for indexes {arguments}")
+	@ValueSource(ints = {0, 1, 2, 3})
+	@DisplayName("Names exists positive test")
+	public void existingNamesTest(int i) {
+		AbstractAnimal animal = createAnimalService.createAnimal(i);
+		assertTrue(animalsProperties.getNamesByIndex(i).contains(animal.getName()));
+	}
 
 }
