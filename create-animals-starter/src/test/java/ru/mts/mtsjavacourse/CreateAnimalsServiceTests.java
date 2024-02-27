@@ -3,40 +3,38 @@ package ru.mts.mtsjavacourse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import ru.mts.mtsjavacourse.models.AbstractAnimal;
 import ru.mts.mtsjavacourse.models.animals.Wolf;
+import ru.mts.mtsjavacourse.services.AnimalFactory;
 import ru.mts.mtsjavacourse.services.CreateAnimalServiceImpl;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.assertSame;
+import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
 
-@SpringBootTest
 @ExtendWith(MockitoExtension.class)
 public class CreateAnimalsServiceTests {
 
-    @MockBean
+    @InjectMocks
     private CreateAnimalServiceImpl createAnimalServiceMock;
-//    @Autowired
-//    ApplicationContext context;
+    @Mock
+    private AnimalFactory factory;
 
     @Test
     @DisplayName("Animal creation test")
     public void animalCreationTest() {
         AbstractAnimal wolfMock = new Wolf("breed", "name", new BigDecimal("123.123"), "character", LocalDate.now());
-        when(createAnimalServiceMock.createAnimal(0)).thenReturn(wolfMock);
+        when(factory.createAnimal(anyInt(), anyString(), any(BigDecimal.class), anyString(), any(LocalDate.class))).thenReturn(wolfMock);
+        AbstractAnimal createdWolf = createAnimalServiceMock.createAnimal(0);
 
-//        CreateAnimalService createAnimalServiceContext = context.getBean(CreateAnimalServiceImpl.class);
-//        AbstractAnimal wolf = createAnimalServiceContext.createAnimal(0);
-
-        assertSame(createAnimalServiceMock.createAnimal(0).getClass(), wolfMock.getClass());
-        assertSame(createAnimalServiceMock.createAnimal(0), wolfMock);
-        System.out.println(wolfMock.shortInfo());
+        assertSame(createdWolf.getClass(), wolfMock.getClass());
+        assertSame(createdWolf, wolfMock);
     }
 
 }
