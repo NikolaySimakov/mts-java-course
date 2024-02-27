@@ -7,7 +7,8 @@ import java.time.LocalDate;
 
 public class Shark extends Predator {
 
-    public Shark(String breed, String name, BigDecimal cost, String character, LocalDate birthDate) {
+    public Shark(String className, String breed, String name, BigDecimal cost, String character, LocalDate birthDate) {
+        this.className = className;
         this.breed = breed;
         this.name = name;
         this.cost = cost;

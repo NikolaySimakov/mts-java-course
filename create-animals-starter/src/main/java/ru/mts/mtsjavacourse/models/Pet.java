@@ -7,6 +7,11 @@ import java.time.LocalDate;
 public abstract class Pet extends AbstractAnimal {
 
     @Override
+    public String getClassName() {
+        return this.className;
+    }
+
+    @Override
     public String getBreed() {
         return this.breed;
     }
@@ -35,4 +40,11 @@ public abstract class Pet extends AbstractAnimal {
         return String.format("Parent class: Pet\n%s", this.shortInfo());
     }
 
+    @Override
+    public Integer getAge() {
+        LocalDate now = LocalDate.now();
+        int nowYear = now.getYear();
+        int birthYear = this.birthDate.getYear();
+        return nowYear - birthYear;
+    }
 }

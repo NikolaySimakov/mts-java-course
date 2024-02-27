@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public abstract class AbstractAnimal implements Animal {
+
+    protected String className;
     protected String breed; // погода
     protected String name; // имя
     protected BigDecimal cost; // цена в магазине должна быть округлена до 2 знаков после запятой
@@ -31,8 +33,19 @@ public abstract class AbstractAnimal implements Animal {
                 birthDate.equals(other.birthDate);
     }
 
+    @Override
+    public int hashCode() {
+        int res = getBreed().hashCode();
+        res = 40 * res + getName().hashCode();
+        res = 40 * res + getCost().hashCode();
+        res = 40 * res + getCharacter().hashCode();
+        res = 40 * res + getBirthDate().hashCode();
+        return res;
+    }
+
     public String shortInfo() {
-        return "- breed: " + this.getBreed() + '\n' +
+        return "- class: " + this.getClassName() + '\n' +
+                "- breed: " + this.getBreed() + '\n' +
                 "- name: " + this.getName() + '\n' +
                 "- cost: " + this.getCost() + '\n' +
                 "- character: " + this.getCharacter() + '\n' +

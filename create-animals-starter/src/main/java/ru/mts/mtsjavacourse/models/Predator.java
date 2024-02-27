@@ -7,6 +7,11 @@ import java.time.LocalDate;
 public abstract class Predator extends AbstractAnimal {
 
     @Override
+    public String getClassName() {
+        return this.className;
+    }
+
+    @Override
     public String getBreed() {
         return this.breed;
     }
@@ -33,5 +38,13 @@ public abstract class Predator extends AbstractAnimal {
 
     public String info() {
         return String.format("Parent class: Predator\n%s", this.shortInfo());
+    }
+
+    @Override
+    public Integer getAge() {
+        LocalDate now = LocalDate.now();
+        int nowYear = now.getYear();
+        int birthYear = this.birthDate.getYear();
+        return nowYear - birthYear;
     }
 }

@@ -29,7 +29,7 @@ public class CreateAnimalsServiceTests {
     @Test
     @DisplayName("Animal creation test")
     public void animalCreationTest() {
-        AbstractAnimal wolfMock = new Wolf("breed", "name", new BigDecimal("123.123"), "character", LocalDate.now());
+        AbstractAnimal wolfMock = new Wolf("Wolf", "breed", "name", new BigDecimal("123.123"), "character", LocalDate.now());
         when(factory.createAnimal(anyInt(), anyString(), any(BigDecimal.class), anyString(), any(LocalDate.class))).thenReturn(wolfMock);
         AbstractAnimal createdWolf = createAnimalServiceMock.createAnimal(0);
 

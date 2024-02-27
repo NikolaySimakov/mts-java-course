@@ -24,13 +24,13 @@ public class AnimalFactory {
         Random random = new Random();
 
         return switch (n) {
-            case 0 -> new Wolf(breed, animalsProperties.getWolfNames()
+            case 0 -> new Wolf("Wolf", breed, animalsProperties.getWolfNames()
                     .get(random.nextInt(animalsProperties.getWolfNames().size())), weight, character, birthDate);
-            case 1 -> new Shark(breed, animalsProperties.getSharkNames()
+            case 1 -> new Shark("Shark", breed, animalsProperties.getSharkNames()
                     .get(random.nextInt(animalsProperties.getSharkNames().size())), weight, character, birthDate);
-            case 2 -> new Cat(breed, animalsProperties.getCatNames()
+            case 2 -> new Cat("Cat", breed, animalsProperties.getCatNames()
                     .get(random.nextInt(animalsProperties.getCatNames().size())), weight, character, birthDate);
-            case 3 -> new Dog(breed, animalsProperties.getDogNames()
+            case 3 -> new Dog("Dog", breed, animalsProperties.getDogNames()
                     .get(random.nextInt(animalsProperties.getDogNames().size())), weight, character, birthDate);
             default -> throw new IllegalArgumentException("Error animal");
         };

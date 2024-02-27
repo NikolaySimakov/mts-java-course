@@ -6,7 +6,8 @@ import java.time.LocalDate;
 
 public class Wolf extends Predator {
 
-    public Wolf(String breed, String name, BigDecimal cost, String character, LocalDate birthDate) {
+    public Wolf(String className, String breed, String name, BigDecimal cost, String character, LocalDate birthDate) {
+        this.className = className;
         this.breed = breed;
         this.name = name;
         this.cost = cost;

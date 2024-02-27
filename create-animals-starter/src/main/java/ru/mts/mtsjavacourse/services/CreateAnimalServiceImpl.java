@@ -6,9 +6,7 @@ import ru.mts.mtsjavacourse.models.AbstractAnimal;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 @Service
 @Scope("prototype")
@@ -36,30 +34,49 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
     }
 
     @Override
-    public List<AbstractAnimal> createAnimalsN(int n) {
-        List<AbstractAnimal> animals = new ArrayList<AbstractAnimal>();
+    public Map<String, List<AbstractAnimal>> createAnimalsN(int n) {
+        Map<String, List<AbstractAnimal>> animalsMap = new HashMap<>();
         Random random = new Random();
 
         for (int i = 0; i < n; i++) {
+
+            // creating animal
             int randomValue = random.nextInt(4);
             AbstractAnimal animal = animalFactory.createAnimal(randomValue, "breed", new BigDecimal("123.2124512"), "character", getBirthDate(randomValue));
-            animals.add(animal);
+
+            // saving to hashmap
+            String key = animal.getClassName();
+            if (animalsMap.containsKey(key)) {
+                animalsMap.get(key).add(animal);
+            } else {
+                animalsMap.put(key, new ArrayList<AbstractAnimal>());
+            }
         }
-        return animals;
+        return animalsMap;
     }
 
     @Override
-    public List<AbstractAnimal> createAnimals() {
-        List<AbstractAnimal> animals = new ArrayList<AbstractAnimal>();
+    public Map<String, List<AbstractAnimal>> createAnimals() {
+        Map<String, List<AbstractAnimal>> animalsMap = new HashMap<>();
         Random random = new Random();
         int countOfAnimals = 0;
 
         do {
             int randomValue = random.nextInt(4);
+
+            // creating animal
             AbstractAnimal animal = animalFactory.createAnimal(randomValue, "breed", new BigDecimal("123.2124512"), "character", getBirthDate(randomValue));
-            animals.add(animal);
+
+            // saving to hashmap
+            String key = animal.getClassName();
+            if (animalsMap.containsKey(key)) {
+                animalsMap.get(key).add(animal);
+            } else {
+                animalsMap.put(key, new ArrayList<AbstractAnimal>());
+            }
+
         } while (++countOfAnimals < 10);
 
-        return animals;
+        return animalsMap;
     }
 }
