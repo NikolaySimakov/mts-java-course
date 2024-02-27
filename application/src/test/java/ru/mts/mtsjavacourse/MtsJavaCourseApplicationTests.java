@@ -10,7 +10,7 @@ import ru.mts.mtsjavacourse.properties.AnimalsProperties;
 import ru.mts.mtsjavacourse.repositories.AnimalsRepository;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -32,45 +32,54 @@ class MtsJavaCourseApplicationTests {
 	@Test
 	@DisplayName("Find older animal positive test")
 	public void findOlderAnimalPositiveTest() {
-		List<AbstractAnimal> animals = animalsRepository.findOlderAnimal(3);
+		Map<AbstractAnimal, Integer> animalsMap = animalsRepository.findOlderAnimal(3);
 		int currentYear = LocalDate.now().getYear();
 
-		animals.forEach(a -> assertTrue(currentYear - a.getBirthDate().getYear() >=  3));
+		for (AbstractAnimal animal : animalsMap.keySet()) {
+			assertTrue(currentYear - animal.getBirthDate().getYear() >= 3);
+		}
 	}
 
 	@Test
-	@DisplayName("Find older animal positive test")
+	@DisplayName("Find older animal negative test")
 	public void findOlderAnimalNegativeTest() {
-		List<AbstractAnimal> animals = animalsRepository.findOlderAnimal(6);
+		Map<AbstractAnimal, Integer> animalsMap = animalsRepository.findOlderAnimal(6);
 		int currentYear = LocalDate.now().getYear();
 
-		animals.forEach(a -> assertFalse(currentYear - a.getBirthDate().getYear() <  6));
+		for (AbstractAnimal animal : animalsMap.keySet()) {
+			assertFalse(currentYear - animal.getBirthDate().getYear() < 6);
+		}
 	}
 
 	@Test
 	@DisplayName("Find leap year names positive test")
 	public void findLeapYearNamesPositiveTest() {
-		List<String> names = animalsRepository.findLeapYearNames();
+		Map<String, LocalDate> namesMap = animalsRepository.findLeapYearNames();
 
-		names.forEach(name -> assertTrue(
-				animalsProperties.getCatNames().contains(name) ||
-						animalsProperties.getDogNames().contains(name) ||
-						animalsProperties.getSharkNames().contains(name) ||
-						animalsProperties.getWolfNames().contains(name)
-		));
+		for (String fullName : namesMap.keySet()) {
+			String name = fullName.split(" ")[1];
+			assertTrue(
+					animalsProperties.getCatNames().contains(name) ||
+							animalsProperties.getDogNames().contains(name) ||
+							animalsProperties.getSharkNames().contains(name) ||
+							animalsProperties.getWolfNames().contains(name)
+			);
+		}
 	}
 
 	@Test
 	@DisplayName("Find leap year names negative test")
 	public void findLeapYearNamesNegativeTest() {
-		List<String> names = animalsRepository.findLeapYearNames();
+		Map<String, LocalDate> namesMap = animalsRepository.findLeapYearNames();
 
-		names.forEach(name -> assertFalse(
-				!animalsProperties.getCatNames().contains(name) &&
-						!animalsProperties.getDogNames().contains(name) &&
-						!animalsProperties.getSharkNames().contains(name) &&
-						!animalsProperties.getWolfNames().contains(name)
-		));
+		for (String name : namesMap.keySet()) {
+			assertTrue(
+					!animalsProperties.getCatNames().contains(name) &&
+							!animalsProperties.getDogNames().contains(name) &&
+							!animalsProperties.getSharkNames().contains(name) &&
+							!animalsProperties.getWolfNames().contains(name)
+			);
+		}
 	}
 
 }
