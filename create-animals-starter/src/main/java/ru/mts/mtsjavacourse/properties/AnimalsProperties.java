@@ -1,6 +1,5 @@
 package ru.mts.mtsjavacourse.properties;
 
-import jakarta.validation.constraints.NotEmpty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.annotation.Validated;
@@ -11,13 +10,13 @@ import java.util.List;
 @ConfigurationProperties(prefix = "animal")
 @Validated
 public class AnimalsProperties {
-    @NotEmpty
+//    @NotEmpty
     private List<String> catNames;
-    @NotEmpty
+//    @NotEmpty
     private List<String> dogNames;
-    @NotEmpty
+//    @NotEmpty
     private List<String> sharkNames;
-    @NotEmpty
+//    @NotEmpty
     private List<String> wolfNames;
 
     public List<String> getCatNames() {
@@ -53,17 +52,12 @@ public class AnimalsProperties {
     }
 
     public List<String> getNamesByIndex(int i) {
-        switch (i) {
-            case 0:
-                return getWolfNames();
-            case 1:
-                return getSharkNames();
-            case 2:
-                return getCatNames();
-            case 3:
-                return getDogNames();
-            default:
-                throw new IllegalArgumentException("Error animal names");
-        }
+        return switch (i) {
+            case 0 -> getWolfNames();
+            case 1 -> getSharkNames();
+            case 2 -> getCatNames();
+            case 3 -> getDogNames();
+            default -> throw new IllegalArgumentException("Error animal names");
+        };
     }
 }
