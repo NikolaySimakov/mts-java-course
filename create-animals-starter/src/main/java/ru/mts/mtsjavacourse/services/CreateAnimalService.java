@@ -10,6 +10,8 @@ import java.util.Random;
 
 public interface CreateAnimalService {
 
+    AbstractAnimal createAnimal(int i);
+
     default List<AbstractAnimal> createAnimals() {
         AnimalFactory animalFactory = new AnimalFactory();
         Random random = new Random();

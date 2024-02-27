@@ -10,8 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-@Scope("prototype")
 @Service
+@Scope("prototype")
 public class CreateAnimalServiceImpl implements CreateAnimalService {
 
     private final AnimalFactory animalFactory;
@@ -28,6 +28,11 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
             case 3 -> LocalDate.of(2020, 7, 13);
             default -> LocalDate.now();
         };
+    }
+
+    @Override
+    public AbstractAnimal createAnimal(int i) {
+        return animalFactory.createAnimal(i, "breed", new BigDecimal("123.2124512"), "character", getBirthDate(i));
     }
 
     @Override
