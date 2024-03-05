@@ -7,7 +7,10 @@ import ru.mts.mtsjavacourse.models.Animal;
 import ru.mts.mtsjavacourse.services.CreateAnimalService;
 
 import javax.annotation.PostConstruct;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -122,5 +125,46 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
         } else {
             System.out.println("No duplicates");
         }
+    }
+
+    @Override
+    public double findAverageAge(List<AbstractAnimal> animalsList) {
+        return animalsList
+                .stream()
+                .map(Animal::getBirthDate)
+                .map(x -> Period.between(x, LocalDate.now()).getYears())
+                .mapToInt(Integer::intValue)
+                .average().orElse(0.0);
+    }
+
+    @Override
+    public List<AbstractAnimal> findOldAndExpensive(List<AbstractAnimal> animalsList) {
+        if (animalsList.isEmpty()) {
+            return new ArrayList<>();
+        }
+
+        BigDecimal sum = animalsList.stream()
+                .map(Animal::getCost)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+
+        BigDecimal average = sum.divide(BigDecimal.valueOf(animalsList.size()), RoundingMode.HALF_UP);
+
+        return animalsList
+                .stream()
+                .filter(animal -> animal.getCost().compareTo(average) > 0 && Period.between(
+                                animal.getBirthDate(), LocalDate.now()).getYears() > 5
+                )
+                .sorted(Comparator.comparing(Animal::getBirthDate))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<AbstractAnimal> findMinConstAnimals(List<AbstractAnimal> animalsList) {
+        return animalsList
+                .stream()
+                .sorted(Comparator.comparing(Animal::getCost))
+                .limit(3)
+                .sorted(Comparator.comparing(Animal::getName).reversed())
+                .collect(Collectors.toList());
     }
 }

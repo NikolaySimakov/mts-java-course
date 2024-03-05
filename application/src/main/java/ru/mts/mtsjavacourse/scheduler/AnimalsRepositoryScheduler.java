@@ -20,16 +20,22 @@ public class AnimalsRepositoryScheduler {
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
         String timeString = localDateTime.format(timeFormatter);
         System.out.println("Time: " + timeString);
-        System.out.printf("All animals: \n%s", animalsRepository.getAnimals().toString());
-        System.out.println();
-        System.out.printf("findLeapYearNames: \n%s", animalsRepository.findLeapYearNames().toString());
-        System.out.println();
-        System.out.printf("findOlderAnimal: \n%s", animalsRepository.findOlderAnimal(5).toString());
-        System.out.println();
-        System.out.printf("findDuplicate: \n%s", animalsRepository.findDuplicate().toString());
-        System.out.println();
+        System.out.printf("All animals: \n%s\n", animalsRepository.getAnimals().toString());
+        System.out.printf("findLeapYearNames: \n%s\n", animalsRepository.findLeapYearNames().toString());
+        System.out.printf("findOlderAnimal: \n%s\n", animalsRepository.findOlderAnimal(5).toString());
+        System.out.printf("findDuplicate: \n%s\n", animalsRepository.findDuplicate().toString());
         System.out.println("printDuplicate: ");
         animalsRepository.printDuplicate();
+        System.out.println();
+        System.out.println("Average ages:");
+        animalsRepository.getAnimals().forEach((key, value) ->
+                System.out.println(key + ": " + animalsRepository.findAverageAge(animalsRepository.getAnimals().get(key))));
+        System.out.println("Old and expensive:");
+        animalsRepository.getAnimals().forEach((key, value) ->
+                System.out.println(key + ": " + animalsRepository.findOldAndExpensive(animalsRepository.getAnimals().get(key))));
+        System.out.println("Min cost animals:");
+        animalsRepository.getAnimals().forEach((key, value) ->
+                System.out.println(key + ": " + animalsRepository.findMinConstAnimals(animalsRepository.getAnimals().get(key))));
     }
 
 }
