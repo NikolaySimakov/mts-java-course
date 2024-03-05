@@ -20,6 +20,8 @@ public class AnimalsRepositoryScheduler {
         DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
         String timeString = localDateTime.format(timeFormatter);
         System.out.println("Time: " + timeString);
+        System.out.printf("All animals: \n%s", animalsRepository.getAnimals().toString());
+        System.out.println();
         System.out.printf("findLeapYearNames: \n%s", animalsRepository.findLeapYearNames().toString());
         System.out.println();
         System.out.printf("findOlderAnimal: \n%s", animalsRepository.findOlderAnimal(5).toString());
