@@ -8,7 +8,7 @@ public abstract class Pet extends AbstractAnimal {
 
     @Override
     public String getClassName() {
-        return this.className;
+        return this.getClass().getSimpleName();
     }
 
     @Override

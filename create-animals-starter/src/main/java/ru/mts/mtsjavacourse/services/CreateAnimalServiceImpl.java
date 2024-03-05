@@ -30,7 +30,8 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
 
     @Override
     public AbstractAnimal createAnimal(int i) {
-        return animalFactory.createAnimal(i, "breed", new BigDecimal("123.2124512"), "character", getBirthDate(i));
+        return animalFactory.createAnimal(i, "breed", new BigDecimal("123.2124512"),
+                "character", getBirthDate(i));
     }
 
     @Override
@@ -42,7 +43,8 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
 
             // creating animal
             int randomValue = random.nextInt(4);
-            AbstractAnimal animal = animalFactory.createAnimal(randomValue, "breed", new BigDecimal("123.2124512"), "character", getBirthDate(randomValue));
+            AbstractAnimal animal = animalFactory.createAnimal(randomValue, "breed",
+                    new BigDecimal("123.2124512"), "character", getBirthDate(randomValue));
 
             // saving to hashmap
             String key = animal.getClassName();
@@ -65,7 +67,8 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
             int randomValue = random.nextInt(4);
 
             // creating animal
-            AbstractAnimal animal = animalFactory.createAnimal(randomValue, "breed", new BigDecimal("123.2124512"), "character", getBirthDate(randomValue));
+            AbstractAnimal animal = animalFactory.createAnimal(randomValue, "breed",
+                    new BigDecimal("123.2124512"), "character", getBirthDate(randomValue));
 
             // saving to hashmap
             String key = animal.getClassName();

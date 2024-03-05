@@ -8,7 +8,7 @@ public abstract class Predator extends AbstractAnimal {
 
     @Override
     public String getClassName() {
-        return this.className;
+        return this.getClass().getSimpleName();
     }
 
     @Override

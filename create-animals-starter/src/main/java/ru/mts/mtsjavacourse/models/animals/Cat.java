@@ -7,8 +7,7 @@ import java.time.LocalDate;
 
 public class Cat extends Pet {
 
-    public Cat(String className, String breed, String name, BigDecimal cost, String character, LocalDate birthDate) {
-        this.className = className;
+    public Cat(String breed, String name, BigDecimal cost, String character, LocalDate birthDate) {
         this.breed = breed;
         this.name = name;
         this.cost = cost;
