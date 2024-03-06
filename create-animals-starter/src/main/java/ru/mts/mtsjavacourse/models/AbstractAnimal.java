@@ -43,7 +43,7 @@ public abstract class AbstractAnimal implements Animal {
     }
 
     public String shortInfo() {
-        return "- class: " + this.getClassName() + '\n' +
+        return "- class: " + this.getClass().getSimpleName() + '\n' +
                 "- breed: " + this.getBreed() + '\n' +
                 "- name: " + this.getName() + '\n' +
                 "- cost: " + this.getCost() + '\n' +

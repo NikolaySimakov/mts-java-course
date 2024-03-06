@@ -7,11 +7,6 @@ import java.time.LocalDate;
 public abstract class Pet extends AbstractAnimal {
 
     @Override
-    public String getClassName() {
-        return this.getClass().getSimpleName();
-    }
-
-    @Override
     public String getBreed() {
         return this.breed;
     }

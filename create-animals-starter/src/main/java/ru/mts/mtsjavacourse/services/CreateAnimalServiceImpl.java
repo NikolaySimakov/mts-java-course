@@ -47,7 +47,7 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
                     new BigDecimal("123.2124512"), "character", getBirthDate(randomValue));
 
             // saving to hashmap
-            String key = animal.getClassName();
+            String key = animal.getClass().getSimpleName();
             if (animalsMap.containsKey(key)) {
                 animalsMap.get(key).add(animal);
             } else {
@@ -71,7 +71,7 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
                     new BigDecimal("123.2124512"), "character", getBirthDate(randomValue));
 
             // saving to hashmap
-            String key = animal.getClassName();
+            String key = animal.getClass().getSimpleName();
             if (animalsMap.containsKey(key)) {
                 animalsMap.get(key).add(animal);
             } else {

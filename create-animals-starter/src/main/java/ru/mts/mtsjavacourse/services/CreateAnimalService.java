@@ -23,7 +23,7 @@ public interface CreateAnimalService {
                     LocalDate.of(2000, 7, 28));
 
             // saving to hashmap
-            String key = animal.getClassName();
+            String key = animal.getClass().getSimpleName();
             if (animalsMap.containsKey(key)) {
                 animalsMap.get(key).add(animal);
             } else {

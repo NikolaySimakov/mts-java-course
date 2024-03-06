@@ -6,12 +6,6 @@ import java.time.LocalDate;
 public interface Animal {
 
     /**
-     * Метод, возвращающий наименование класса
-     * @return String
-     */
-    String getClassName();
-
-    /**
      * Метод, возвращающий породу
      * @return String
      */

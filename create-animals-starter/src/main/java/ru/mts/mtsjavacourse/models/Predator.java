@@ -7,11 +7,6 @@ import java.time.LocalDate;
 public abstract class Predator extends AbstractAnimal {
 
     @Override
-    public String getClassName() {
-        return this.getClass().getSimpleName();
-    }
-
-    @Override
     public String getBreed() {
         return this.breed;
     }
