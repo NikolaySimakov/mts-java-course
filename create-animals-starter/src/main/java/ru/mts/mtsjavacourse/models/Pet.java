@@ -35,4 +35,11 @@ public abstract class Pet extends AbstractAnimal {
         return String.format("Parent class: Pet\n%s", this.shortInfo());
     }
 
+    @Override
+    public Integer getAge() {
+        LocalDate now = LocalDate.now();
+        int nowYear = now.getYear();
+        int birthYear = this.birthDate.getYear();
+        return nowYear - birthYear;
+    }
 }

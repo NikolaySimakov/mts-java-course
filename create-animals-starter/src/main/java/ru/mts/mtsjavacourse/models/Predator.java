@@ -34,4 +34,12 @@ public abstract class Predator extends AbstractAnimal {
     public String info() {
         return String.format("Parent class: Predator\n%s", this.shortInfo());
     }
+
+    @Override
+    public Integer getAge() {
+        LocalDate now = LocalDate.now();
+        int nowYear = now.getYear();
+        int birthYear = this.birthDate.getYear();
+        return nowYear - birthYear;
+    }
 }

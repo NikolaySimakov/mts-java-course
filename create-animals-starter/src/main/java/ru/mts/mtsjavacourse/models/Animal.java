@@ -34,4 +34,10 @@ public interface Animal {
      * @return LocalDate
      */
     LocalDate getBirthDate();
+
+    /**
+     * Метод возвращающий возраст
+     * @return Integer
+     */
+    Integer getAge();
 }

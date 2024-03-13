@@ -2,14 +2,19 @@ package ru.mts.mtsjavacourse.repositories;
 
 import ru.mts.mtsjavacourse.models.AbstractAnimal;
 
+import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
+import java.util.Map;
 
 public interface AnimalsRepository {
 
-    List<String> findLeapYearNames();
-    List<AbstractAnimal> findOlderAnimal(int age);
-    Set<AbstractAnimal> findDuplicate();
+    Map<String, List<AbstractAnimal>> getAnimals();
+    Map<String, LocalDate> findLeapYearNames();
+    Map<AbstractAnimal, Integer> findOlderAnimal(int age);
+    Map<String, List<AbstractAnimal>> findDuplicate();
     void printDuplicate();
+    double findAverageAge(List<AbstractAnimal> animalsList);
+    List<AbstractAnimal> findOldAndExpensive(List<AbstractAnimal> animalsList);
+    List<AbstractAnimal> findMinConstAnimals(List<AbstractAnimal> animalsList);
 
 }
