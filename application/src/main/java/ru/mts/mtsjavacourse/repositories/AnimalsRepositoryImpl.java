@@ -2,6 +2,8 @@ package ru.mts.mtsjavacourse.repositories;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import ru.mts.mtsjavacourse.exceptions.AnimalsListException;
+import ru.mts.mtsjavacourse.exceptions.WrongAgeException;
 import ru.mts.mtsjavacourse.models.AbstractAnimal;
 import ru.mts.mtsjavacourse.models.Animal;
 import ru.mts.mtsjavacourse.services.CreateAnimalService;
@@ -32,25 +34,6 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
         return animalsMap;
     }
 
-    private boolean isLeapYear(LocalDate date) {
-        int year = date.getYear();
-        return (year > 1584 && ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0)));
-    }
-
-    private boolean isOlderThan(LocalDate date, int n) {
-        LocalDate now = LocalDate.now();
-        int nowYear = now.getYear();
-        int birthYear = date.getYear();
-
-        return ((nowYear - birthYear) > n);
-    }
-
-    private AbstractAnimal findOldest(List<AbstractAnimal> animalList) {
-        return animalList.stream()
-                .max(Comparator.comparingInt(Animal::getAge))
-                .orElseThrow();
-    }
-
     @Override
     public Map<String, LocalDate> findLeapYearNames() {
         if (animalsMap == null) {
@@ -74,6 +57,10 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
     public Map<AbstractAnimal, Integer> findOlderAnimal(int age) {
         if (animalsMap == null) {
             throw new IllegalArgumentException("animalsMap is null");
+        }
+
+        if (age < 0) {
+            throw new WrongAgeException("Wrong age format: " + age);
         }
 
         Map<AbstractAnimal, Integer> olderAnimals = animalsMap.values().stream()
@@ -159,12 +146,35 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
     }
 
     @Override
-    public List<AbstractAnimal> findMinConstAnimals(List<AbstractAnimal> animalsList) {
+    public List<AbstractAnimal> findMinConstAnimals(List<AbstractAnimal> animalsList) throws AnimalsListException {
+        if (animalsList.size() < 3) {
+            throw new AnimalsListException("List of animals contains less than 3 elements");
+        }
+
         return animalsList
                 .stream()
                 .sorted(Comparator.comparing(Animal::getCost))
                 .limit(3)
                 .sorted(Comparator.comparing(Animal::getName).reversed())
                 .collect(Collectors.toList());
+    }
+
+    private boolean isLeapYear(LocalDate date) {
+        int year = date.getYear();
+        return (year > 1584 && ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0)));
+    }
+
+    private boolean isOlderThan(LocalDate date, int n) {
+        LocalDate now = LocalDate.now();
+        int nowYear = now.getYear();
+        int birthYear = date.getYear();
+
+        return ((nowYear - birthYear) > n);
+    }
+
+    private AbstractAnimal findOldest(List<AbstractAnimal> animalList) {
+        return animalList.stream()
+                .max(Comparator.comparingInt(Animal::getAge))
+                .orElseThrow();
     }
 }

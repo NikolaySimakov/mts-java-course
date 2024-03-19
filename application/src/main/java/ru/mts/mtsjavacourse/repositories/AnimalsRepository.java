@@ -1,5 +1,6 @@
 package ru.mts.mtsjavacourse.repositories;
 
+import ru.mts.mtsjavacourse.exceptions.AnimalsListException;
 import ru.mts.mtsjavacourse.models.AbstractAnimal;
 
 import java.time.LocalDate;
@@ -15,6 +16,6 @@ public interface AnimalsRepository {
     void printDuplicate();
     double findAverageAge(List<AbstractAnimal> animalsList);
     List<AbstractAnimal> findOldAndExpensive(List<AbstractAnimal> animalsList);
-    List<AbstractAnimal> findMinConstAnimals(List<AbstractAnimal> animalsList);
+    List<AbstractAnimal> findMinConstAnimals(List<AbstractAnimal> animalsList) throws AnimalsListException;
 
 }
