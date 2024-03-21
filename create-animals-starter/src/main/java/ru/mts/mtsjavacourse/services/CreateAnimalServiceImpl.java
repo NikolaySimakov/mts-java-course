@@ -42,9 +42,8 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
         for (int i = 0; i < n; i++) {
 
             // creating animal
-            int randomValue = random.nextInt(4);
-            AbstractAnimal animal = animalFactory.createAnimal(randomValue, "breed",
-                    new BigDecimal("123.2124512"), "character", getBirthDate(randomValue));
+            AbstractAnimal animal = animalFactory.createAnimal(random.nextInt(4), "breed",
+                    new BigDecimal("123.2124512"), "character", getBirthDate(random.nextInt(4)));
 
             // saving to hashmap
             String key = animal.getClass().getSimpleName();
@@ -64,11 +63,9 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
         int countOfAnimals = 0;
 
         do {
-            int randomValue = random.nextInt(4);
-
             // creating animal
-            AbstractAnimal animal = animalFactory.createAnimal(randomValue, "breed",
-                    new BigDecimal("123.2124512"), "character", getBirthDate(randomValue));
+            AbstractAnimal animal = animalFactory.createAnimal(random.nextInt(4), "breed",
+                    new BigDecimal("123.2124512"), "character", getBirthDate(random.nextInt(4)));
 
             // saving to hashmap
             String key = animal.getClass().getSimpleName();
@@ -78,7 +75,7 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
                 animalsMap.put(key, new ArrayList<AbstractAnimal>());
             }
 
-        } while (++countOfAnimals < 10);
+        } while (++countOfAnimals < 20);
 
         return animalsMap;
     }
