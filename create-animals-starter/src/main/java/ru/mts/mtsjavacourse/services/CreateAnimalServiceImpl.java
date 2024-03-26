@@ -6,7 +6,11 @@ import ru.mts.mtsjavacourse.models.AbstractAnimal;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @Service
 @Scope("prototype")
@@ -36,7 +40,7 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
 
     @Override
     public Map<String, List<AbstractAnimal>> createAnimalsN(int n) {
-        Map<String, List<AbstractAnimal>> animalsMap = new HashMap<>();
+        Map<String, List<AbstractAnimal>> animalsMap = new ConcurrentHashMap<>();
         Random random = new Random();
 
         for (int i = 0; i < n; i++) {
@@ -50,7 +54,9 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
             if (animalsMap.containsKey(key)) {
                 animalsMap.get(key).add(animal);
             } else {
-                animalsMap.put(key, new ArrayList<AbstractAnimal>());
+                List<AbstractAnimal> animalList = new CopyOnWriteArrayList<>();
+                animalList.add(animal);
+                animalsMap.put(key, animalList);
             }
         }
         return animalsMap;
@@ -58,7 +64,7 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
 
     @Override
     public Map<String, List<AbstractAnimal>> createAnimals() {
-        Map<String, List<AbstractAnimal>> animalsMap = new HashMap<>();
+        Map<String, List<AbstractAnimal>> animalsMap = new ConcurrentHashMap<>();
         Random random = new Random();
         int countOfAnimals = 0;
 
@@ -72,7 +78,9 @@ public class CreateAnimalServiceImpl implements CreateAnimalService {
             if (animalsMap.containsKey(key)) {
                 animalsMap.get(key).add(animal);
             } else {
-                animalsMap.put(key, new ArrayList<AbstractAnimal>());
+                List<AbstractAnimal> animalList = new CopyOnWriteArrayList<>();
+                animalList.add(animal);
+                animalsMap.put(key, animalList);
             }
 
         } while (++countOfAnimals < 20);
