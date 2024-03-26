@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
+import ru.mts.mtsjavacourse.exceptions.AnimalsListException;
 import ru.mts.mtsjavacourse.models.AbstractAnimal;
 import ru.mts.mtsjavacourse.models.animals.Cat;
 import ru.mts.mtsjavacourse.properties.AnimalsProperties;
@@ -89,7 +90,7 @@ class MtsJavaCourseApplicationTests {
 
 	@Test
 	@DisplayName("Find average age test")
-	public void testFindAverageAge() {
+	public void findAverageAgeTest() {
 		List<LocalDate> birthDates = new ArrayList<>(List.of(
 				LocalDate.of(2016, 7, 12),
 				LocalDate.of(2014, 10, 6),
@@ -112,7 +113,7 @@ class MtsJavaCourseApplicationTests {
 
 	@Test
 	@DisplayName("Find old and expensive")
-	public void testFindOldAndExpensive() {
+	public void findOldAndExpensiveTest() {
 		List<AbstractAnimal> cats = new ArrayList<>();
 		cats.add(new Cat("breed", "name", new BigDecimal("1.123"), "character",
 				LocalDate.of(2016, 7, 12)));
@@ -140,7 +141,7 @@ class MtsJavaCourseApplicationTests {
 
 	@Test
 	@DisplayName("Find min cost animals")
-	public void testFindMinCostAnimals() {
+	public void findMinCostAnimalsTest() throws AnimalsListException {
 		List<AbstractAnimal> cats = new ArrayList<>();
 		cats.add(new Cat("breed1", "A", new BigDecimal("1.2"), "character",
 				LocalDate.of(2016, 7, 12)));
