@@ -14,6 +14,8 @@ import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 
@@ -40,17 +42,15 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
             throw new IllegalArgumentException("animalsMap is null");
         }
 
-        Map<String, LocalDate> leapYearNames = new HashMap<>();
-
-        animalsMap.forEach((key, value) -> value
-                .stream()
+        return animalsMap.values().stream()
+                .flatMap(List::stream)
                 .filter(animal -> isLeapYear(animal.getBirthDate()))
-                .forEach(a -> leapYearNames.put(
-                                key.concat(" ".concat(a.getName())), a.getBirthDate()
-                        )
+                .collect(Collectors.toConcurrentMap(
+                    animal -> animal.getClass().getSimpleName() + " " + animal.getName(),
+                    Animal::getBirthDate,
+                    (ex, repl) -> ex.isAfter(repl) ? ex : repl,
+                    ConcurrentHashMap::new
                 ));
-
-        return leapYearNames;
     }
 
     @Override
@@ -66,10 +66,11 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
         Map<AbstractAnimal, Integer> olderAnimals = animalsMap.values().stream()
                 .flatMap(List::stream)
                 .filter(animal -> animal.getAge() > age)
-                .collect(Collectors.toMap(
+                .collect(Collectors.toConcurrentMap(
                         animal -> animal,
                         Animal::getAge,
-                        Integer::sum
+                        Integer::sum,
+                        ConcurrentHashMap::new
                 ));
 
         if (olderAnimals.isEmpty()) {
@@ -77,7 +78,7 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
             AbstractAnimal oldestAnimal = findOldest(
                     animalsMap.values().stream()
                             .flatMap(List::stream)
-                            .collect(Collectors.toList())
+                            .collect(Collectors.toCollection(CopyOnWriteArrayList::new))
             );
 
             int oldestAnimalAge = oldestAnimal.getAge();
@@ -98,7 +99,11 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
         return animalsMap.entrySet().stream()
                 .flatMap(entry -> entry.getValue().stream())
                 .filter(animal -> !animalsSet.add(animal))
-                .collect(Collectors.groupingBy(animal -> animal.getClass().getSimpleName(), Collectors.toList()));
+                .collect(Collectors.groupingBy(
+                        animal -> animal.getClass().getSimpleName(),
+                        ConcurrentHashMap::new,
+                        Collectors.toCollection(CopyOnWriteArrayList::new)
+                ));
     }
 
     @Override
@@ -107,7 +112,7 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
         if (!duplicates.isEmpty()) {
             duplicates.forEach((className, animalsList) -> {
                 System.out.println("Class: " + className);
-                animalsList.forEach(animal -> System.out.println(animal.toString()));
+                animalsList.forEach(animal -> System.out.println(animal.shortInfo()));
             });
         } else {
             System.out.println("No duplicates");
@@ -142,7 +147,7 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
                                 animal.getBirthDate(), LocalDate.now()).getYears() > 5
                 )
                 .sorted(Comparator.comparing(Animal::getBirthDate))
-                .collect(Collectors.toList());
+                .collect(Collectors.toCollection(CopyOnWriteArrayList::new));
     }
 
     @Override
@@ -156,7 +161,7 @@ public class AnimalsRepositoryImpl implements AnimalsRepository {
                 .sorted(Comparator.comparing(Animal::getCost))
                 .limit(3)
                 .sorted(Comparator.comparing(Animal::getName).reversed())
-                .collect(Collectors.toList());
+                .collect(Collectors.toCollection(CopyOnWriteArrayList::new));
     }
 
     private boolean isLeapYear(LocalDate date) {
